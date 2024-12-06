@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.StudentMapper">
+<!--    &lt;!&ndash; 计算总记录数 &ndash;&gt;-->
+<!--    <select id="countCourses" resultType="long">-->
+<!--        SELECT COUNT(*) FROM course;-->
+<!--    </select>-->
+
+    <!-- 查询分页数据 -->
+    <select id="findCourses" resultType="com.example.pojo.Course">
+        SELECT c.courseId, c.courseName, c.credits, t.Name AS teacherName
+        FROM course c
+        JOIN teacher t ON c.TeacherID = t.TeacherID;
+    </select>
+
+<!--    &lt;!&ndash; 插入选课记录 &ndash;&gt;-->
+<!--    <insert id="selectCourse">-->
+<!--        INSERT INTO course_selection (StudentID, CourseID)-->
+<!--        VALUES (#{studentID}, #{courseID})-->
+<!--    </insert>-->
+
+</mapper>
