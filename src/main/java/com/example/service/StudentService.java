@@ -11,9 +11,9 @@ public interface StudentService {
 
     void selectCourse(SC sc);
 
-    List<SC> selectGrade(Integer StudentID);
+    List<SC> selectGrade(Integer student_id);
 
-    List<Course> selectTable(Integer studentID);
+    List<Course> selectTable(Integer student_id);
 
     void deleteCourse(SC sc);
 

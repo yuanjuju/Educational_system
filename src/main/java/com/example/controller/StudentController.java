@@ -20,7 +20,6 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
-    private Integer studentID;
 
     //分页查看选课
     @GetMapping("/get_courses")
@@ -51,20 +50,20 @@ public class StudentController {
 
 
 //    查询成绩功能
-    @GetMapping("/get_grades/{StudentID}")
-    public Result selectGrade(@PathVariable Integer StudentID){
-        log.info("查询学生成绩：{}",StudentID);
-        List<SC> sc=studentService.selectGrade(StudentID);
+    @GetMapping("/get_grades/{student_id}")
+    public Result selectGrade(@PathVariable Integer student_id){
+        log.info("查询学生成绩：{}",student_id);
+        List<SC> sc=studentService.selectGrade(student_id);
         return Result.success(sc);
     }
 
 
 
 //    查询课表功能
-    @GetMapping("/get_timetable/{StudentID}")
-    public Result selectTable(@PathVariable Integer StudentID){
-        log.info("查询学生课表：{}",StudentID);
-        List<Course> course=studentService.selectTable(StudentID);
+    @GetMapping("/get_timetable/{student_id}")
+    public Result selectTable(@PathVariable Integer student_id){
+        log.info("查询学生课表：{}",student_id);
+        List<Course> course=studentService.selectTable(student_id);
         return Result.success(course);
     }
 
@@ -81,7 +80,6 @@ public class StudentController {
 
 
 //    修改选课信息
-//    有bug需要改
     @PostMapping("/update_course_selection")
     public Result updateBook(@RequestBody SC sc){
         log.info("更新选课信息：{}",sc);

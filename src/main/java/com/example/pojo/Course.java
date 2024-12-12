@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 public class Course {
     // Course.java
 
-        private int courseID;
-        private String courseName;
-        private double credits;
+        private int course_id;
+        private String course_name;
+        private double credit;
         private String teacherID;
-        private String Name;   //老师的名字
-        private String dayOfWeek;    // 新增字段：星期几
-        private String timePeriod;   // 新增字段：时间段
+        private String teacher_name;   //老师的名字
+        private String day_of_week;    // 新增字段：星期几
+        private String time_slot;   // 新增字段：时间段
 
 
 }

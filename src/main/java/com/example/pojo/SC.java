@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SC {
-    private Integer courseID;
-    private Integer StudentID;
-    private String courseName;
+    private Integer course_id;
+    private Integer student_id;
+    private String course_name;
     private Double grade;
-    private Integer BuyBook;  // 1购买书，2不购买
+    private Integer buy_textbook;  // 1购买书，2不购买
     private String feedback;  //反馈
 
 }

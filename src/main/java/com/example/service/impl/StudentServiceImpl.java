@@ -43,14 +43,14 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<SC> selectGrade(Integer StudentID) {
-        List<SC> sc=studentMapper.selectGrade(StudentID);
+    public List<SC> selectGrade(Integer student_id) {
+        List<SC> sc=studentMapper.selectGrade(student_id);
         return sc;
     }
 
     @Override
-    public List<Course> selectTable(Integer studentID) {
-        return studentMapper.selectTable(studentID);
+    public List<Course> selectTable(Integer student_id) {
+        return studentMapper.selectTable(student_id);
     }
 
     @Override

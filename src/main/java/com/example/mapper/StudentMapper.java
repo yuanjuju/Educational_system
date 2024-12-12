@@ -17,36 +17,36 @@ public interface StudentMapper {
     List<Course> findCourses();
 
     @Insert("        INSERT INTO SC(StudentID, CourseID)\n" +
-            "        VALUES (#{studentID}, #{courseID})")
+            "        VALUES (#{student_id}, #{course_id})")
     void selectCourse(SC sc);
 
 
 
     @Select("select CourseName,Grade " +
             "from sc,course " +
-            "where sc.CourseID=course.CourseID and StudentID=#{studentID}")
-    List<SC> selectGrade(Integer StudentID);
+            "where sc.CourseID=course.CourseID and StudentID=#{student_id}")
+    List<SC> selectGrade(Integer student_id);
 
 
     @Select(("select DayOfWeek,course.CourseID,CourseName,Credits,Name,TimePeriod " +
             "from course,teacher,sc " +
-            "where course.TeacherID=teacher.TeacherID and course.CourseID=sc.CourseID and StudentID=#{StudentID};"))
-    List<Course> selectTable(Integer studentID);
+            "where course.TeacherID=teacher.TeacherID and course.CourseID=sc.CourseID and StudentID=#{student_id};"))
+    List<Course> selectTable(Integer student_id);
 
     @Delete("delete from sc " +
-            "where StudentID=#{StudentID} and CourseID=#{courseID}")
+            "where StudentID=#{student_id} and CourseID=#{course_id}")
     void deleteCourse(SC sc);
 
 
     @Update("update sc " +
-            "set BuyBook=#{BuyBook} " +
-            "where StudentID=#{StudentID} and CourseID=#{courseID}")
+            "set BuyBook=#{buy_textbook} " +
+            "where StudentID=#{student_id} and CourseID=#{course_id}")
     void updateBook(SC sc);
 
 
 
     @Update("update sc " +
             "set feedback=#{feedback} " +
-            "where StudentID=#{StudentID} and CourseID=#{courseID}")
+            "where StudentID=#{student_id} and CourseID=#{course_id}")
     void setFeedback(SC sc);
 }

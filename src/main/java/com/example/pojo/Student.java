@@ -13,11 +13,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student {
-    private Integer StudentID; //ID
+    private Integer student_id; //ID
     private String Username; //用户名
-    private String Password; //密码
+    private String password; //密码
     private String Name; //姓名
-    private Short gender; //性别 , 1 男, 2 女
-    private Integer DeptID; //学院ID
-    private LocalDateTime DOB; //创建时间
+    private Short student_sex; //性别 , 1 男, 2 女
+    private Integer student_dept_id; //学院ID
+    private LocalDateTime student_DOB; //创建时间
 }
