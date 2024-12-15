@@ -5,6 +5,7 @@ import com.example.mapper.StudentMapper;
 import com.example.pojo.Course;
 import com.example.pojo.PageBean;
 import com.example.pojo.SC;
+import com.example.pojo.Student;
 import com.example.service.StudentService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,9 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
 
-//    分页查询课程
+
+
+    //    分页查询课程
     @Override
     public PageBean page(Integer page, Integer pageSize) {
         // 使用 PageHelper 自动处理分页
@@ -66,5 +69,15 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void setFeedback(SC sc) {
         studentMapper.setFeedback(sc);
+    }
+
+    @Override
+    public Student LoginStudent(Student student) {
+        return studentMapper.LoginStudent(student);
+    }
+
+    @Override
+    public void UpdateStudentPassword(Student student) {
+        studentMapper.UpdateStudentPassword(student);
     }
 }

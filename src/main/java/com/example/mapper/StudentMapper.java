@@ -3,12 +3,18 @@ package com.example.mapper;
 
 import com.example.pojo.Course;
 import com.example.pojo.SC;
+import com.example.pojo.Student;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface StudentMapper {
+
+
+
+
+
 
     @Select("SELECT COUNT(*) FROM course")
     Long countCourses();
@@ -49,4 +55,12 @@ public interface StudentMapper {
             "set feedback=#{feedback} " +
             "where StudentID=#{student_id} and CourseID=#{course_id}")
     void setFeedback(SC sc);
+
+    @Select("select * from student where Password=#{password} and student_no=#{student_no}")
+    Student LoginStudent(Student student);
+
+    @Update("update student " +
+            "set Password=#{new_password} " +
+            "where student_no=#{student_no} and Password=#{password}")
+    void UpdateStudentPassword(Student student);
 }

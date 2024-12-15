@@ -3,10 +3,12 @@ package com.example.service;
 import com.example.pojo.Course;
 import com.example.pojo.PageBean;
 import com.example.pojo.SC;
+import com.example.pojo.Student;
 
 import java.util.List;
 
 public interface StudentService {
+
     PageBean page(Integer page, Integer pageSize);
 
     void selectCourse(SC sc);
@@ -20,4 +22,8 @@ public interface StudentService {
     void updateBook(SC sc);
 
     void setFeedback(SC sc);
+
+    Student LoginStudent(Student student);
+
+    void UpdateStudentPassword(Student student);
 }

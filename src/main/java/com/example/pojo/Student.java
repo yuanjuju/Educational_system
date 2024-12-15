@@ -16,8 +16,10 @@ public class Student {
     private Integer student_id; //ID
     private String Username; //用户名
     private String password; //密码
-    private String Name; //姓名
+    private String student_name; //姓名
     private Short student_sex; //性别 , 1 男, 2 女
     private Integer student_dept_id; //学院ID
-    private LocalDateTime student_DOB; //创建时间
+    private LocalDate student_DOB; //创建时间
+    private  String student_no;
+    private String new_password; //准备修改的新密码
 }
