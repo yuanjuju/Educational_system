@@ -99,6 +99,42 @@ public class StudentController {
         return Result.success();
     }
 
+    /**
+     * 查找学生信息接口
+     * @param studentNo 学号
+     * @param studentName 姓名
+     * @param studentDept 院系名称
+     * @param studentDOB 生日
+     * @param studentSex 性别
+     * @param page 分页页码
+     * @param pageSize 每页记录数
+     * @return 响应数据
+     */
+    @GetMapping("/admin/find_student")
+    public Result findStudent(
+            @RequestParam(value = "student_no", required = false) String studentNo,
+            @RequestParam(value = "student_name", required = false) String studentName,
+            @RequestParam(value = "student_dept", required = false) String studentDept,
+            @RequestParam(value = "student_DOB", required = false) String studentDOB,
+            @RequestParam(value = "student_sex", required = false) String studentSex,
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            @RequestParam(value = "pageSize", defaultValue = "20") int pageSize) {
+
+        // 调用服务层方法获取学生数据
+        List<Student> students = studentService.findStudents(studentNo, studentName, studentDept, studentDOB, studentSex, page, pageSize);
+        int total = studentService.getTotalCount(studentNo, studentName, studentDept, studentDOB, studentSex);
+
+        // 判断是否有符合条件的学生
+        if (students.isEmpty()) {
+            return Result.error("没有符合条件的信息");
+        } else {
+            // 包装数据为分页结果
+            return Result.success(students); // 返回查询结果
+        }
+    }
+
+
+
 
 
 

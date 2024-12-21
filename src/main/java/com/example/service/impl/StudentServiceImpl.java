@@ -80,4 +80,23 @@ public class StudentServiceImpl implements StudentService {
     public void UpdateStudentPassword(Student student) {
         studentMapper.UpdateStudentPassword(student);
     }
+
+
+    public List<Student> findStudents(String studentNo, String studentName, String studentDept, String studentDOB, String studentSex, int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+        return studentMapper.findStudents(studentNo, studentName, studentDept, studentDOB, studentSex, offset, pageSize);
+    }
+
+    /**
+     * 获取符合条件的学生总数
+     * @param studentNo 学号
+     * @param studentName 姓名
+     * @param studentDept 院系名称
+     * @param studentDOB 生日
+     * @param studentSex 性别
+     * @return 总记录数
+     */
+    public int getTotalCount(String studentNo, String studentName, String studentDept, String studentDOB, String studentSex) {
+        return studentMapper.getTotalCount(studentNo, studentName, studentDept, studentDOB, studentSex);
+    }
 }
