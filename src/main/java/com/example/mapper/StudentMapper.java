@@ -63,4 +63,39 @@ public interface StudentMapper {
             "set Password=#{new_password} " +
             "where student_no=#{student_no} and Password=#{password}")
     void UpdateStudentPassword(Student student);
+
+    @Select("<script>"
+            + "SELECT * FROM students WHERE 1=1"
+            + "<if test='studentNo != null'> AND student_no LIKE CONCAT('%', #{studentNo}, '%') </if>"
+            + "<if test='studentName != null'> AND student_name LIKE CONCAT('%', #{studentName}, '%') </if>"
+            + "<if test='studentDept != null'> AND student_dept_id IN (SELECT dept_id FROM departments WHERE dept_name LIKE CONCAT('%', #{studentDept}, '%')) </if>"
+            + "<if test='studentDOB != null'> AND student_DOB LIKE CONCAT('%', #{studentDOB}, '%') </if>"
+            + "<if test='studentSex != null'> AND student_sex = #{studentSex} </if>"
+            + "LIMIT #{offset}, #{limit}"
+            + "</script>")
+    List<Student> findStudents(
+            @Param("studentNo") String studentNo,
+            @Param("studentName") String studentName,
+            @Param("studentDept") String studentDept,
+            @Param("studentDOB") String studentDOB,
+            @Param("studentSex") String studentSex,
+            @Param("offset") int offset,
+            @Param("limit") int limit
+    );
+
+    @Select("<script>"
+            + "SELECT COUNT(*) FROM students WHERE 1=1"
+            + "<if test='studentNo != null'> AND student_no LIKE CONCAT('%', #{studentNo}, '%') </if>"
+            + "<if test='studentName != null'> AND student_name LIKE CONCAT('%', #{studentName}, '%') </if>"
+            + "<if test='studentDept != null'> AND student_dept_id IN (SELECT dept_id FROM departments WHERE dept_name LIKE CONCAT('%', #{studentDept}, '%')) </if>"
+            + "<if test='studentDOB != null'> AND student_DOB LIKE CONCAT('%', #{studentDOB}, '%') </if>"
+            + "<if test='studentSex != null'> AND student_sex = #{studentSex} </if>"
+            + "</script>")
+    int getTotalCount(
+            @Param("studentNo") String studentNo,
+            @Param("studentName") String studentName,
+            @Param("studentDept") String studentDept,
+            @Param("studentDOB") String studentDOB,
+            @Param("studentSex") String studentSex
+    );
 }
