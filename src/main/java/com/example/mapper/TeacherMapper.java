@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface TeacherMapper {
 
-    @Select("select * from teacher where password=#{teacher_password} and teacher_no=#{teacher_no}")
+    @Select("select * from teacher where password=#{teacher_password} and TeacherID=#{teacher_no}")
     Teacher LoginTeacher(Teacher teacher);
 
 
@@ -20,14 +20,7 @@ public interface TeacherMapper {
             "where teacher_no=#{teacher_no} and password=#{teacher_password}")
     void UpdateTeacherPassword(Teacher teacher);
 
-    @Select("<script>"
-            + "SELECT * FROM teachers WHERE 1=1"
-            + "<if test='teacherNo != null'> AND teacher_no LIKE CONCAT('%', #{teacherNo}, '%') </if>"
-            + "<if test='teacherName != null'> AND teacher_name LIKE CONCAT('%', #{teacherName}, '%') </if>"
-            + "<if test='teacherDept != null'> AND teacher_dept LIKE CONCAT('%', #{teacherDept}, '%') </if>"
-            + "<if test='teacherPosition != null'> AND teacher_position = #{teacherPosition} </if>"
-            + "LIMIT #{offset}, #{limit}"
-            + "</script>")
+
     List<Teacher> findTeachers(
             @Param("teacherNo") String teacherNo,
             @Param("teacherName") String teacherName,
@@ -37,13 +30,7 @@ public interface TeacherMapper {
             @Param("limit") int limit
     );
 
-    @Select("<script>"
-            + "SELECT COUNT(*) FROM teachers WHERE 1=1"
-            + "<if test='teacherNo != null'> AND teacher_no LIKE CONCAT('%', #{teacherNo}, '%') </if>"
-            + "<if test='teacherName != null'> AND teacher_name LIKE CONCAT('%', #{teacherName}, '%') </if>"
-            + "<if test='teacherDept != null'> AND teacher_dept LIKE CONCAT('%', #{teacherDept}, '%') </if>"
-            + "<if test='teacherPosition != null'> AND teacher_position = #{teacherPosition} </if>"
-            + "</script>")
+
     int getTotalCount(
             @Param("teacherNo") String teacherNo,
             @Param("teacherName") String teacherName,

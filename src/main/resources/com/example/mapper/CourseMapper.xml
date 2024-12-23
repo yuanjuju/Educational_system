@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.CourseMapper">
+
+    <!-- 计算总记录数 -->
+    <!--
+    <select id="countCourses" resultType="long">
+        SELECT COUNT(*) FROM course;
+    </select>
+    -->
+
+    <select id="selectCourses" resultType="Course">
+        SELECT c.CourseID, c.course_no, c.CourseName, c.Credits, c.DayOfWeek, c.TimePeriod
+        FROM course c
+        LEFT JOIN teacher t ON c.TeacherID = t.TeacherID
+        WHERE 1=1
+        <if test="courseNo != null and courseNo != ''">
+            AND c.course_no LIKE CONCAT('%', #{courseNo}, '%')
+        </if>
+        <if test="courseName != null and courseName != ''">
+            AND c.course_name LIKE CONCAT('%', #{courseName}, '%')
+        </if>
+        <if test="credit != null">
+            AND c.Credits = #{credit}
+        </if>
+        <if test="dayOfWeek != null and dayOfWeek != ''">
+            AND c.DayOfWeek LIKE CONCAT('%', #{dayOfWeek}, '%')
+        </if>
+        <if test="timeSlot != null and timeSlot != ''">
+            AND c.TimePeriod LIKE CONCAT('%', #{timeSlot}, '%')
+        </if>
+        <if test="teacherName != null and teacherName != ''">
+            AND t.teacher_name LIKE CONCAT('%', #{teacherName}, '%')
+        </if>
+        LIMIT #{offset}, #{limit}
+    </select>
+
+
+    <select id="getTotalCount" resultType="int">
+            SELECT COUNT(*) FROM course c
+            LEFT JOIN teacher t ON c.TeacherID = t.TeacherID
+            WHERE 1=1
+            <if test="courseNo != null">
+                AND c.course_no LIKE CONCAT('%', #{courseNo}, '%')
+            </if>
+            <if test="courseName != null">
+                AND c.course_name LIKE CONCAT('%', #{courseName}, '%')
+            </if>
+            <if test="credit != null">
+                AND c.credit = #{credit}
+            </if>
+            <if test="dayOfWeek != null">
+                AND c.day_of_week LIKE CONCAT('%', #{dayOfWeek}, '%')
+            </if>
+            <if test="timeSlot != null">
+                AND c.time_slot LIKE CONCAT('%', #{timeSlot}, '%')
+            </if>
+            <if test="teacherName != null">
+                AND t.teacher_name LIKE CONCAT('%', #{teacherName}, '%')
+            </if>
+    </select>
+
+
+    <select id="getTotalCoursesCount" resultType="int">
+            SELECT COUNT(*)
+            FROM course c
+            JOIN teacher t ON c.TeacherID = t.TeacherID
+            WHERE 1=1
+            <if test="course_no != null and course_no != ''">
+                AND c.course_no = #{course_no}
+            </if>
+            <if test="course_name != null and course_name != ''">
+                AND c.course_name LIKE CONCAT('%', #{course_name}, '%')
+            </if>
+            <if test="credit != null">
+                AND c.credit = #{credit}
+            </if>
+            <if test="day_of_week != null and day_of_week != ''">
+                AND c.day_of_week = #{day_of_week}
+            </if>
+            <if test="time_slot != null and time_slot != ''">
+                AND c.time_slot = #{time_slot}
+            </if>
+            <if test="teacher_name != null and teacher_name != ''">
+                AND t.teacher_name LIKE CONCAT('%', #{teacher_name}, '%')
+            </if>
+    </select>
+
+
+</mapper>
