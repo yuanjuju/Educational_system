@@ -27,16 +27,16 @@ public class StudentController {
     private CourseService courseService;
 
     //分页查看选课
-    @GetMapping("/get_courses")
-    @ResponseBody
-    public Result page(@RequestParam(defaultValue ="1") Integer page,
-                       @RequestParam(defaultValue ="10") Integer pageSize
-){
-        log.info("分页查询，参数：{}，{}",page,pageSize);
-//        调用Service
-        PageBean<Course> pageBean = studentService.page(page, pageSize);
-        return Result.success(pageBean);
-    }
+//    @GetMapping("/get_courses")
+//    @ResponseBody
+//    public Result page(@RequestParam(defaultValue ="1") Integer page,
+//                       @RequestParam(defaultValue ="10") Integer pageSize
+//){
+//        log.info("分页查询，参数：{}，{}",page,pageSize);
+////        调用Service
+//        PageBean<Course> pageBean = studentService.page(page, pageSize);
+//        return Result.success(pageBean);
+//    }
 
 
 

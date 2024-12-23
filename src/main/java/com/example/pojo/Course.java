@@ -19,5 +19,4 @@ public class Course {
         private String time_slot;   // 新增字段：时间段
         private String course_no;
 
-
 }

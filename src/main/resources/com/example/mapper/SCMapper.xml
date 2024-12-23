@@ -19,8 +19,31 @@
             AND sc.grade >= #{minGrade}
         </if>
         <if test="maxGrade != null">
-            AND sc.grade <= #{maxGrade}
+            AND sc.grade >=  #{maxGrade}
         </if>
+    </select>
+
+
+    <select id="findStudentCourses" resultType="SC">
+            SELECT sc.StudentID, sc.CourseID, sc.BuyBook, sc.Grade
+            FROM sc
+            WHERE 1=1
+            <if test="query.studentNo != null">
+                AND sc.student_no LIKE CONCAT('%', #{query.studentNo}, '%')
+            </if>
+            <if test="query.courseNo != null">
+                AND sc.course_no LIKE CONCAT('%', #{query.courseNo}, '%')
+            </if>
+            <if test="query.buyTextbook != null">
+                AND sc.buy_textbook = #{query.buyTextbook}
+            </if>
+            <if test="query.minGrade != null">
+                AND sc.grade >= #{query.minGrade}
+            </if>
+            <if test="query.maxGrade != null">
+                AND sc.grade >= #{query.maxGrade}
+            </if>
+            LIMIT #{query.offset}, #{query.limit}
     </select>
 
 </mapper>

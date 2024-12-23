@@ -11,17 +11,7 @@ import java.util.List;
 public interface SCMapper {
 
 
-    @Select("<script>"
-            + "SELECT sc.StudentID, sc.CourseID, sc.BuyBook, sc.Grade "
-            + "FROM sc "
-            + "WHERE 1=1 "
-            + "<if test='studentNo != null'> AND sc.student_no LIKE CONCAT('%', #{studentNo}, '%') </if>"
-            + "<if test='courseNo != null'> AND sc.course_no LIKE CONCAT('%', #{courseNo}, '%') </if>"
-            + "<if test='buyTextbook != null'> AND sc.buy_textbook = #{buyTextbook} </if>"
-            + "<if test='minGrade != null'> AND sc.grade &gt;= #{minGrade} </if>"
-            + "<if test='maxGrade != null'> AND sc.grade &lt;= #{maxGrade} </if>"
-            + "LIMIT #{offset}, #{limit}"
-            + "</script>")
+
     List<SC> findStudentCourses(
             @Param("studentNo") String studentNo,
             @Param("courseNo") String courseNo,

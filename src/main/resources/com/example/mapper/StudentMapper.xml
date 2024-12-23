@@ -15,11 +15,7 @@
         JOIN teacher t ON c.TeacherID = t.TeacherID;
     </select>
 
-<!--    &lt;!&ndash; 插入选课记录 &ndash;&gt;-->
-<!--    <insert id="selectCourse">-->
-<!--        INSERT INTO course_selection (StudentID, CourseID)-->
-<!--        VALUES (#{studentID}, #{courseID})-->
-<!--    </insert>-->
+
 
     <select id="findStudents" resultType="Student">
             SELECT * FROM student WHERE 1=1

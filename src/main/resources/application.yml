@@ -17,7 +17,9 @@ spring:
 #mybatis的配置
 mybatis:
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    map-underscore-to-camel-case: true
-
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 输出 SQL 日志
+    map-underscore-to-camel-case: true  # 将数据库字段的下划线命名（如 user_name）映射到 Java 的驼峰命名（如 userName）
+  # 可以添加其他常见的 MyBatis 配置项
+  type-aliases-package: com.example.pojo  # 扫描指定包中的类型别名
+  mapper-locations: classpath:/com/example/mapper/*.xml  # 映射文件路径
 
