@@ -21,4 +21,49 @@
 <!--        VALUES (#{studentID}, #{courseID})-->
 <!--    </insert>-->
 
+    <select id="findStudents" resultType="Student">
+            SELECT * FROM student WHERE 1=1
+            <if test="studentNo != null">
+                AND student_no LIKE CONCAT('%', #{studentNo}, '%')
+            </if>
+            <if test="studentName != null">
+                AND student_name LIKE CONCAT('%', #{studentName}, '%')
+            </if>
+            <if test="studentDept != null">
+                AND student_dept_id IN (
+                SELECT dept_id FROM departments
+                WHERE dept_name LIKE CONCAT('%', #{studentDept}, '%')
+                )
+            </if>
+            <if test="studentDOB != null">
+                AND student_DOB LIKE CONCAT('%', #{studentDOB}, '%')
+            </if>
+            <if test="studentSex != null">
+                AND student_sex = #{studentSex}
+            </if>
+            LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="getTotalCount" resultType="int">
+        SELECT COUNT(*) FROM student WHERE 1=1
+        <if test="studentNo != null">
+            AND student_no LIKE CONCAT('%', #{studentNo}, '%')
+        </if>
+        <if test="studentName != null">
+            AND student_name LIKE CONCAT('%', #{studentName}, '%')
+        </if>
+        <if test="studentDept != null">
+            AND student_dept_id IN (
+            SELECT dept_id FROM departments
+            WHERE dept_name LIKE CONCAT('%', #{studentDept}, '%')
+            )
+        </if>
+        <if test="studentDOB != null">
+            AND student_DOB LIKE CONCAT('%', #{studentDOB}, '%')
+        </if>
+        <if test="studentSex != null">
+            AND student_sex = #{studentSex}
+        </if>
+    </select>
+
 </mapper>

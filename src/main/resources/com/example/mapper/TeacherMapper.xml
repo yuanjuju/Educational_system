@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.TeacherMapper">
+
+    <select id="findTeachers" resultType="Teacher">
+        SELECT * FROM teacher WHERE 1=1
+        <if test="teacherNo != null">
+            AND teacher_no LIKE CONCAT('%', #{teacherNo}, '%')
+        </if>
+        <if test="teacherName != null">
+            AND teacher_name LIKE CONCAT('%', #{teacherName}, '%')
+        </if>
+        <if test="teacherDept != null">
+            AND teacher_dept LIKE CONCAT('%', #{teacherDept}, '%')
+        </if>
+        <if test="teacherPosition != null">
+            AND teacher_position = #{teacherPosition}
+        </if>
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="getTotalCount" resultType="int">
+        SELECT COUNT(*) FROM teacher WHERE 1=1
+        <if test="teacherNo != null">
+            AND teacher_no LIKE CONCAT('%', #{teacherNo}, '%')
+        </if>
+        <if test="teacherName != null">
+            AND teacher_name LIKE CONCAT('%', #{teacherName}, '%')
+        </if>
+        <if test="teacherDept != null">
+            AND teacher_dept LIKE CONCAT('%', #{teacherDept}, '%')
+        </if>
+        <if test="teacherPosition != null">
+            AND teacher_position = #{teacherPosition}
+        </if>
+    </select>
+
+
+</mapper>

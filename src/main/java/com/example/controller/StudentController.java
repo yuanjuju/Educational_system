@@ -3,6 +3,7 @@ package com.example.controller;
 
 import com.example.pojo.*;
 import com.example.service.AdministratorService;
+import com.example.service.CourseService;
 import com.example.service.StudentService;
 
 
@@ -22,17 +23,20 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private CourseService courseService;
+
     //分页查看选课
-//    @GetMapping("/get_courses")
-//    @ResponseBody
-//    public Result page(@RequestParam(defaultValue ="1") Integer page,
-//                       @RequestParam(defaultValue ="10") Integer pageSize
-//){
-//        log.info("分页查询，参数：{}，{}",page,pageSize);
-////        调用Service
-//        PageBean<Course> pageBean = studentService.page(page, pageSize);
-//        return Result.success(pageBean);
-//    }
+    @GetMapping("/get_courses")
+    @ResponseBody
+    public Result page(@RequestParam(defaultValue ="1") Integer page,
+                       @RequestParam(defaultValue ="10") Integer pageSize
+){
+        log.info("分页查询，参数：{}，{}",page,pageSize);
+//        调用Service
+        PageBean<Course> pageBean = studentService.page(page, pageSize);
+        return Result.success(pageBean);
+    }
 
 
 
@@ -99,44 +103,44 @@ public class StudentController {
         return Result.success();
     }
 
-    /**
-     * 查找学生信息接口
-     * @param studentNo 学号
-     * @param studentName 姓名
-     * @param studentDept 院系名称
-     * @param studentDOB 生日
-     * @param studentSex 性别
-     * @param page 分页页码
-     * @param pageSize 每页记录数
-     * @return 响应数据
-     */
-    @GetMapping("/admin/find_student")
-    public Result findStudent(
-            @RequestParam(value = "student_no", required = false) String studentNo,
-            @RequestParam(value = "student_name", required = false) String studentName,
-            @RequestParam(value = "student_dept", required = false) String studentDept,
-            @RequestParam(value = "student_DOB", required = false) String studentDOB,
-            @RequestParam(value = "student_sex", required = false) String studentSex,
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "pageSize", defaultValue = "20") int pageSize) {
 
 
-        // 调用服务层方法获取学生数据
-        List<Student> students = studentService.findStudents(studentNo, studentName, studentDept, studentDOB, studentSex, page, pageSize);
-        int total = studentService.getTotalCount(studentNo, studentName, studentDept, studentDOB, studentSex);
+    @GetMapping("/get_courses")
+    public Result getCourses(@RequestParam(value = "page", defaultValue = "1") int page,
+                             @RequestParam(value = "pageSize", defaultValue = "20") int pageSize) {
+        // 获取分页数据
 
-        // 判断是否有符合条件的学生
-        if (students.isEmpty()) {
-            return Result.error("没有符合条件的信息");
+        List<Course> courses = courseService.getCourses(page, pageSize);
+        // 获取总数
+        int total = courseService.getTotalCourseCount();
+
+        if (courses.isEmpty()) {
+            return Result.error("课程查询失败");
         } else {
-            // 包装数据为分页结果
-            return Result.success(students); // 返回查询结果
+            return Result.success(new Object[]{total, courses});
         }
     }
 
+    @GetMapping("/find_course")
+    public Result findCourses(@RequestParam(value = "course_no", required = false) String course_no,
+                              @RequestParam(value = "course_name", required = false) String course_name,
+                              @RequestParam(value = "credit", required = false) Float credit,
+                              @RequestParam(value = "day_of_week", required = false) String day_of_week,
+                              @RequestParam(value = "time_slot", required = false) String time_slot,
+                              @RequestParam(value = "teacher_name", required = false) String teacher_name,
+                              @RequestParam(value = "page", defaultValue = "1") int page,
+                              @RequestParam(value = "pageSize", defaultValue = "20") int pageSize) {
 
+        // 获取符合条件的课程
+        List<Course> courses = courseService.findCourses(course_no, course_name, credit, day_of_week, time_slot, teacher_name, page, pageSize);
+        int total = courseService.getTotalCoursesCount(course_no, course_name, credit, day_of_week, time_slot, teacher_name);
 
-
+        if (courses.isEmpty()) {
+            return Result.error("查找课程失败");
+        } else {
+            return Result.success(new Object[]{total, courses});
+        }
+    }
 
 
 
