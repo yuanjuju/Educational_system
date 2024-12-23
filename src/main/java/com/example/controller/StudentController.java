@@ -23,16 +23,16 @@ public class StudentController {
     private StudentService studentService;
 
     //分页查看选课
-    @GetMapping("/get_courses")
-    @ResponseBody
-    public Result page(@RequestParam(defaultValue ="1") Integer page,
-                       @RequestParam(defaultValue ="10") Integer pageSize
-){
-        log.info("分页查询，参数：{}，{}",page,pageSize);
-//        调用Service
-        PageBean<Course> pageBean = studentService.page(page, pageSize);
-        return Result.success(pageBean);
-    }
+//    @GetMapping("/get_courses")
+//    @ResponseBody
+//    public Result page(@RequestParam(defaultValue ="1") Integer page,
+//                       @RequestParam(defaultValue ="10") Integer pageSize
+//){
+//        log.info("分页查询，参数：{}，{}",page,pageSize);
+////        调用Service
+//        PageBean<Course> pageBean = studentService.page(page, pageSize);
+//        return Result.success(pageBean);
+//    }
 
 
 
@@ -119,6 +119,7 @@ public class StudentController {
             @RequestParam(value = "student_sex", required = false) String studentSex,
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "pageSize", defaultValue = "20") int pageSize) {
+
 
         // 调用服务层方法获取学生数据
         List<Student> students = studentService.findStudents(studentNo, studentName, studentDept, studentDOB, studentSex, page, pageSize);
