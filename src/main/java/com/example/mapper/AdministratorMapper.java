@@ -17,8 +17,8 @@ public interface AdministratorMapper {
     void AddStudent(Student student);
 
 
-    @Insert("        INSERT INTO teacher( Name,Gender,DeptID,Title)\n" +
-            "        VALUES (#{teacher_name},#{teacher_sex},#{teacher_dept_id},#{teacher_position})")
+    @Insert("        INSERT INTO teacher( Name,Gender,DeptID,Title,teacher_no,password)\n" +
+            "        VALUES (#{teacher_name},#{teacher_sex},#{teacher_dept_id},#{teacher_position},#{teacher_no},#{password})")
     void AddTeacher(Teacher teacher);
 
 
