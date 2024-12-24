@@ -19,4 +19,15 @@ public class Course {
         private String time_slot;   // 新增字段：时间段
         private String course_no;
 
+
+        private int CourseID;
+        private String CourseName;
+        private double Credits;
+        private String TeacherID;
+        private String DayOfWeek;    // 新增字段：星期几
+        private String TimePeriod;   // 新增字段：时间段
+
+
+
+
 }

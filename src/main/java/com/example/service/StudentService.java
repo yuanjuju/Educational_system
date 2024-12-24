@@ -1,9 +1,6 @@
 package com.example.service;
 
-import com.example.pojo.Course;
-import com.example.pojo.PageBean;
-import com.example.pojo.SC;
-import com.example.pojo.Student;
+import com.example.pojo.*;
 
 import java.util.List;
 

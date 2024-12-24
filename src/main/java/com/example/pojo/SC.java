@@ -16,4 +16,10 @@ public class SC {
     private Integer buy_textbook;  // 1购买书，2不购买
     private String feedback;  //反馈
 
+    private Integer StudentID;
+    private Integer CourseID;
+    private Double Grade;
+    private Integer BuyBook;  // 1购买书，2不购买
+
+
 }

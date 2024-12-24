@@ -19,4 +19,15 @@ public class Teacher {
     private String teacher_password;
     private String new_password; //准备修改的新密码
 
+
+
+
+    private Integer TeacherID; //ID
+    private String Title; //职位
+    private String Name; //姓名
+    private Short Gender; //性别 , 1 男, 2 女
+    private Integer DeptID; //学院ID
+    private String password;
+
+
 }

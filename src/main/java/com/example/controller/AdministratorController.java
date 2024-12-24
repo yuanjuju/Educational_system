@@ -154,6 +154,7 @@ public class AdministratorController {
         List<Student> students = studentService.findStudents(studentNo, studentName, studentDept, studentDOB, studentSex, page, pageSize);
         int total = studentService.getTotalCount(studentNo, studentName, studentDept, studentDOB, studentSex);
 
+        System.out.print(students);
         // 判断是否有符合条件的学生
         if (students.isEmpty()) {
             return Result.error("没有符合条件的信息");
@@ -188,7 +189,7 @@ public class AdministratorController {
         }
     }
 
-    @GetMapping("/admin/find_SC")
+    @GetMapping("/find_SC")
     public Result findStudentCourse(
             @RequestParam(value = "student_no", required = false) String studentNo,
             @RequestParam(value = "course_no", required = false) String courseNo,

@@ -7,7 +7,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/educational_system
     username: root
-    password: 109235
+    password: O2752137957O
   #    文件上传的配置
   servlet:
     multipart:

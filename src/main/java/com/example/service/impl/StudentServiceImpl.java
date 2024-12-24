@@ -2,10 +2,7 @@ package com.example.service.impl;
 
 
 import com.example.mapper.StudentMapper;
-import com.example.pojo.Course;
-import com.example.pojo.PageBean;
-import com.example.pojo.SC;
-import com.example.pojo.Student;
+import com.example.pojo.*;
 import com.example.service.StudentService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
