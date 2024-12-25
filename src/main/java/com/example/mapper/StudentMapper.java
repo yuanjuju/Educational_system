@@ -83,4 +83,7 @@ public interface StudentMapper {
             @Param("studentDOB") String studentDOB,
             @Param("studentSex") String studentSex
     );
+
+    @Select("select * from student where student_no=#{student_no}")
+    List<Student> CheckstudentInfo(String student_no);
 }

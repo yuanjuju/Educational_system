@@ -37,4 +37,8 @@ public interface TeacherMapper {
             @Param("teacherDept") String teacherDept,
             @Param("teacherPosition") String teacherPosition
     );
+
+
+    @Select("select * from teacher where teacher_no=#{teacher_no}")
+    List<Teacher> CheckteacherInfo(String teacher_no);
 }

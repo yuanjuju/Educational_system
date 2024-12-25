@@ -41,6 +41,11 @@ public class TeacherServiceImpl implements TeacherService {
     public int getTotalCount(String teacherNo, String teacherName, String teacherDept, String teacherPosition) {
         return teacherMapper.getTotalCount(teacherNo, teacherName, teacherDept, teacherPosition);
     }
+
+    @Override
+    public List<Teacher> CheckteacherInfo(String teacher_no) {
+        return teacherMapper.CheckteacherInfo(teacher_no);
+    }
 }
 
 
