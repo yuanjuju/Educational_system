@@ -15,6 +15,7 @@ public class SC {
     private Double grade;
     private Integer buy_textbook;  // 1购买书，2不购买
     private String feedback;  //反馈
+    private String CourseName;
 
     private Integer StudentID;
     private Integer CourseID;
