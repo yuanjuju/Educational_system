@@ -80,4 +80,16 @@ public class AdministratorServiceImpl implements AdministratorService {
     public List<Admin> CheckadminInfo(String admin_no) {
         return administratorMapper.CheckadminInfo(admin_no);
     }
+
+    @Override
+    public Admin LoginAdmin(Admin admin) {
+        return administratorMapper.LoginAdmin(admin);
+    }
+
+    @Override
+    public void UpdateAdminPassword(Admin admin) {
+        administratorMapper.UpdateAdminPassword(admin);
+    }
+
+
 }

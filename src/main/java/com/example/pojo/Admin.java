@@ -11,4 +11,5 @@ public class Admin {
     private Integer admin_no;
     private String username; //用户名
     private String password; //密码
+    private String new_password; //准备修改的新密码
 }

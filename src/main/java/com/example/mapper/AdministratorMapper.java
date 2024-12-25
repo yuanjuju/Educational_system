@@ -85,4 +85,13 @@ public interface AdministratorMapper {
 
     @Select("select * from admin where admin_no=#{admin_no}")
     List<Admin> CheckadminInfo(String admin_no);
+
+    @Select("select * from admin where password=#{password} and admin_no=#{admin_no}")
+    Admin LoginAdmin(Admin admin);
+
+
+    @Update("update admin " +
+            "set password=#{new_password} " +
+            "where admin_no=#{admin_no} and password=#{password}")
+    void UpdateAdminPassword(Admin admin);
 }

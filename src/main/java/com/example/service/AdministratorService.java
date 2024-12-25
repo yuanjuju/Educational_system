@@ -35,4 +35,8 @@ public interface AdministratorService {
     void UpdateSC(SC sc);
 
     List<Admin> CheckadminInfo(String admin_no);
+
+    Admin LoginAdmin(Admin admin);
+
+    void UpdateAdminPassword(Admin admin);
 }
