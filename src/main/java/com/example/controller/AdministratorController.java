@@ -37,6 +37,8 @@ public class AdministratorController {
         return Result.success();
     }
 
+
+
 //        增加教师功能
     @PostMapping("/add_teacher")
     public Result AddTeacher(@RequestBody Teacher teacher){

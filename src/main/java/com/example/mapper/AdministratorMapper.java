@@ -1,13 +1,9 @@
 package com.example.mapper;
 
-import com.example.pojo.Course;
-import com.example.pojo.SC;
-import com.example.pojo.Student;
-import com.example.pojo.Teacher;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Update;
+import com.example.pojo.*;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface AdministratorMapper {
@@ -85,4 +81,8 @@ public interface AdministratorMapper {
             "    Grade = COALESCE(#{grade}, Grade) " +
             "WHERE StudentID = #{student_id} AND CourseID = #{course_id};")
     void UpdateSC(SC sc);
+
+
+    @Select("select * from admin where admin_no=#{admin_no}")
+    List<Admin> CheckadminInfo(String admin_no);
 }

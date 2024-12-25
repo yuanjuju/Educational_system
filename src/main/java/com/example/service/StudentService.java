@@ -27,4 +27,6 @@ public interface StudentService {
     List<Student> findStudents(String studentNo, String studentName, String studentDept, String studentDOB, String studentSex, int page, int pageSize);
 
     int getTotalCount(String studentNo, String studentName, String studentDept, String studentDOB, String studentSex);
+
+    List<Student> CheckstudentInfo(String student);
 }

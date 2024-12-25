@@ -1,12 +1,14 @@
 package com.example.service;
 
-import com.example.pojo.Course;
-import com.example.pojo.SC;
-import com.example.pojo.Student;
-import com.example.pojo.Teacher;
+import com.example.pojo.*;
+
+import java.util.List;
 
 
 public interface AdministratorService {
+
+
+
 
     void AddStudent(Student student);
 
@@ -31,4 +33,6 @@ public interface AdministratorService {
     void UpdateCourse(Course course);
 
     void UpdateSC(SC sc);
+
+    List<Admin> CheckadminInfo(String admin_no);
 }

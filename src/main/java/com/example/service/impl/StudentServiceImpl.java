@@ -96,4 +96,9 @@ public class StudentServiceImpl implements StudentService {
     public int getTotalCount(String studentNo, String studentName, String studentDept, String studentDOB, String studentSex) {
         return studentMapper.getTotalCount(studentNo, studentName, studentDept, studentDOB, studentSex);
     }
+
+    @Override
+    public List<Student> CheckstudentInfo(String student_no) {
+        return studentMapper.CheckstudentInfo(student_no);
+    }
 }
