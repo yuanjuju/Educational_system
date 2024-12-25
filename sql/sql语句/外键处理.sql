@@ -49,3 +49,9 @@ ALTER TABLE admin
 
 ALTER TABLE admin
     ADD admin_no VARCHAR(255) UNIQUE;
+
+
+
+select CourseName,Grade
+        from sc,course
+        where sc.CourseID=course.CourseID and StudentID=1
