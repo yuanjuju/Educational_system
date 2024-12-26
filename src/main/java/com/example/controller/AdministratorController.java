@@ -209,23 +209,26 @@ public class AdministratorController {
         System.out.print(buyTextbook);
         List<SC> studentCourses;
         // 调用服务层方法获取选课记录
-        if(buyTextbook.isEmpty())
+        if(buyTextbook == null )
         {
-
-            studentCourses = scService.findStudentCourses(studentNo, courseNo, 1, minGrade, maxGrade, page, pageSize);
-            int total = scService.getTotalCount(studentNo, courseNo, 1, minGrade, maxGrade);
-        }
-        if(Objects.equals(buyTextbook, "是"))
-        {
-            studentCourses = scService.findStudentCourses(studentNo, courseNo, 1, minGrade, maxGrade, page, pageSize);
-            int total = scService.getTotalCount(studentNo, courseNo, 1, minGrade, maxGrade);
-
+            studentCourses = scService.findStudentCourses(studentNo, courseNo,2, minGrade, maxGrade, page, pageSize);
+            int total = scService.getTotalCount(studentNo, courseNo,2, minGrade, maxGrade);
         }
         else
         {
-            studentCourses = scService.findStudentCourses(studentNo, courseNo, 0, minGrade, maxGrade, page, pageSize);
-            int total = scService.getTotalCount(studentNo, courseNo, 0, minGrade, maxGrade);
+            if(Objects.equals(buyTextbook, "是"))
+            {
+                studentCourses = scService.findStudentCourses(studentNo, courseNo, 1, minGrade, maxGrade, page, pageSize);
+                int total = scService.getTotalCount(studentNo, courseNo, 1, minGrade, maxGrade);
+
+            }
+            else
+            {
+                studentCourses = scService.findStudentCourses(studentNo, courseNo, 0, minGrade, maxGrade, page, pageSize);
+                int total = scService.getTotalCount(studentNo, courseNo, 0, minGrade, maxGrade);
+            }
         }
+
 
 
         // 判断是否有符合条件的选课记录
