@@ -1,14 +1,13 @@
 package com.example.service.impl;
 
 import com.example.mapper.AdministratorMapper;
-import com.example.pojo.Course;
-import com.example.pojo.SC;
-import com.example.pojo.Student;
-import com.example.pojo.Teacher;
+import com.example.pojo.*;
 import com.example.service.AdministratorService;
 import com.example.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AdministratorServiceImpl implements AdministratorService {
@@ -76,4 +75,21 @@ public class AdministratorServiceImpl implements AdministratorService {
     public void UpdateSC(SC sc) {
         administratorMapper.UpdateSC(sc);
     }
+
+    @Override
+    public List<Admin> CheckadminInfo(String admin_no) {
+        return administratorMapper.CheckadminInfo(admin_no);
+    }
+
+    @Override
+    public Admin LoginAdmin(Admin admin) {
+        return administratorMapper.LoginAdmin(admin);
+    }
+
+    @Override
+    public void UpdateAdminPassword(Admin admin) {
+        administratorMapper.UpdateAdminPassword(admin);
+    }
+
+
 }

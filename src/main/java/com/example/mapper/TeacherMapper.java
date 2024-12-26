@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface TeacherMapper {
 
-    @Select("select * from teacher where password=#{teacher_password} and TeacherID=#{teacher_no}")
+    @Select("select * from teacher where password=#{teacher_password} and teacher_no=#{teacher_no}")
     Teacher LoginTeacher(Teacher teacher);
 
 
@@ -37,4 +37,8 @@ public interface TeacherMapper {
             @Param("teacherDept") String teacherDept,
             @Param("teacherPosition") String teacherPosition
     );
+
+
+    @Select("select * from teacher where teacher_no=#{teacher_no}")
+    List<Teacher> CheckteacherInfo(String teacher_no);
 }

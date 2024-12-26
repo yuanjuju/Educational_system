@@ -34,3 +34,24 @@ ALTER TABLE course ADD COLUMN course_no VARCHAR(50) UNIQUE;
 select * from teacher where password='123456' and teacher_no='20241218';
 
 
+CREATE TABLE admin (
+                       username VARCHAR(255),
+                       password VARCHAR(255)
+);
+
+ALTER TABLE admin
+    ADD CONSTRAINT pk_admin PRIMARY KEY (username);
+
+
+ALTER TABLE admin
+    ADD CONSTRAINT uq_admin_username UNIQUE (username);
+
+
+ALTER TABLE admin
+    ADD admin_no VARCHAR(255) UNIQUE;
+
+
+
+select CourseName,Grade
+        from sc,course
+        where sc.CourseID=course.CourseID and StudentID=1

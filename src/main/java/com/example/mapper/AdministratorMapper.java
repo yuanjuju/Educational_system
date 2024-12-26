@@ -1,13 +1,9 @@
 package com.example.mapper;
 
-import com.example.pojo.Course;
-import com.example.pojo.SC;
-import com.example.pojo.Student;
-import com.example.pojo.Teacher;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Update;
+import com.example.pojo.*;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface AdministratorMapper {
@@ -17,8 +13,8 @@ public interface AdministratorMapper {
     void AddStudent(Student student);
 
 
-    @Insert("        INSERT INTO teacher( Name,Gender,DeptID,Title)\n" +
-            "        VALUES (#{teacher_name},#{teacher_sex},#{teacher_dept_id},#{teacher_position})")
+    @Insert("        INSERT INTO teacher( Name,Gender,DeptID,Title,teacher_no,password)\n" +
+            "        VALUES (#{teacher_name},#{teacher_sex},#{teacher_dept_id},#{teacher_position},#{teacher_no},#{password})")
     void AddTeacher(Teacher teacher);
 
 
@@ -85,4 +81,17 @@ public interface AdministratorMapper {
             "    Grade = COALESCE(#{grade}, Grade) " +
             "WHERE StudentID = #{student_id} AND CourseID = #{course_id};")
     void UpdateSC(SC sc);
+
+
+    @Select("select * from admin where admin_no=#{admin_no}")
+    List<Admin> CheckadminInfo(String admin_no);
+
+    @Select("select * from admin where password=#{password} and admin_no=#{admin_no}")
+    Admin LoginAdmin(Admin admin);
+
+
+    @Update("update admin " +
+            "set password=#{new_password} " +
+            "where admin_no=#{admin_no} and password=#{password}")
+    void UpdateAdminPassword(Admin admin);
 }

@@ -1,8 +1,10 @@
 package com.example.controller;
 
+import com.example.pojo.Admin;
 import com.example.pojo.Result;
 import com.example.pojo.Student;
 import com.example.pojo.Teacher;
+import com.example.service.AdministratorService;
 import com.example.service.LoginService;
 import com.example.service.StudentService;
 import com.example.service.TeacherService;
@@ -60,7 +62,6 @@ public class LoginController {
     @Autowired
     private TeacherService teacherService;
     //    老师登录
-//    有bug，需要修改
     @PostMapping("/teacher")
     public Result LoginTeacher(@RequestBody Teacher teacher){
         log.info("老师登录：{}",teacher);
@@ -95,6 +96,35 @@ public class LoginController {
         return Result.success();
     }
 
+    @Autowired
+    private AdministratorService administratorService;
+
+    @PostMapping("/admin")
+    public Result LoginAdmin(@RequestBody Admin admin){
+        log.info("管理员登录：{}",admin);
+        Admin adm=administratorService.LoginAdmin(admin);
+//        登录成功，生成令牌
+        if(adm!=null){
+            Map<String,Object> claims=new HashMap<>();
+            claims.put("admin_no",adm.getAdmin_no());// 唯一标识ID
+            claims.put("username",adm.getUsername());// 工号，作为登录用户名
+            String jwt=JwtUtils.generateJwt(claims);
+            return Result.success(jwt);
+        }
+
+//        登录失败，报错
+        return adm!=null?Result.success():Result.error("用户名或密码错误");
+
+    }
+
+
+
+    @PostMapping("/updateadmin")
+    public Result UpdateAdminPassword(@RequestBody Admin admin){
+        log.info("管理员密码修改：{}",admin);
+        administratorService.UpdateAdminPassword(admin);
+        return Result.success();
+    }
 
 
 }
