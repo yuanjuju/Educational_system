@@ -7,19 +7,19 @@
         FROM sc
         WHERE 1=1
         <if test="studentNo != null">
-            AND sc.student_no LIKE CONCAT('%', #{studentNo}, '%')
+            AND sc.studentID LIKE CONCAT('%', #{studentNo}, '%')
         </if>
         <if test="courseNo != null">
-            AND sc.course_no LIKE CONCAT('%', #{courseNo}, '%')
+            AND sc.courseID LIKE CONCAT('%', #{courseNo}, '%')
         </if>
         <if test="buyTextbook != null">
-            AND sc.buy_textbook = #{buyTextbook}
+            AND sc.BuyBook = #{buyTextbook}
         </if>
         <if test="minGrade != null">
-            AND sc.grade >= #{minGrade}
+            AND sc.Grade >= #{minGrade}
         </if>
         <if test="maxGrade != null">
-            AND sc.grade >=  #{maxGrade}
+            AND sc.Grade >=  #{maxGrade}
         </if>
     </select>
 
@@ -28,22 +28,22 @@
             SELECT sc.StudentID, sc.CourseID, sc.BuyBook, sc.Grade
             FROM sc
             WHERE 1=1
-            <if test="query.studentNo != null">
-                AND sc.student_no LIKE CONCAT('%', #{query.studentNo}, '%')
+            <if test="studentNo != null">
+                AND sc.studentID LIKE CONCAT('%', #{studentNo}, '%')
             </if>
-            <if test="query.courseNo != null">
-                AND sc.course_no LIKE CONCAT('%', #{query.courseNo}, '%')
+            <if test="courseNo != null">
+                AND sc.courseID LIKE CONCAT('%', #{courseNo}, '%')
             </if>
-            <if test="query.buyTextbook != null">
-                AND sc.buy_textbook = #{query.buyTextbook}
+            <if test="buyTextbook != null">
+                AND sc.BuyBook = #{buyTextbook}
             </if>
-            <if test="query.minGrade != null">
-                AND sc.grade >= #{query.minGrade}
+            <if test="minGrade != null">
+                AND sc.Grade >= #{minGrade}
             </if>
-            <if test="query.maxGrade != null">
-                AND sc.grade >= #{query.maxGrade}
+            <if test="maxGrade != null">
+                AND sc.Grade >= #{maxGrade}
             </if>
-            LIMIT #{query.offset}, #{query.limit}
+            LIMIT #{offset}, #{limit}
     </select>
 
 </mapper>

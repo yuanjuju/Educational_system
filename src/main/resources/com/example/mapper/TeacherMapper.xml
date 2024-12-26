@@ -8,13 +8,13 @@
             AND teacher_no LIKE CONCAT('%', #{teacherNo}, '%')
         </if>
         <if test="teacherName != null">
-            AND teacher_name LIKE CONCAT('%', #{teacherName}, '%')
+            AND Name LIKE CONCAT('%', #{teacherName}, '%')
         </if>
         <if test="teacherDept != null">
-            AND teacher_dept LIKE CONCAT('%', #{teacherDept}, '%')
+            AND DeptID LIKE CONCAT('%', #{teacherDept}, '%')
         </if>
         <if test="teacherPosition != null">
-            AND teacher_position = #{teacherPosition}
+            AND Title = #{teacherPosition}
         </if>
         LIMIT #{offset}, #{limit}
     </select>
@@ -25,13 +25,13 @@
             AND teacher_no LIKE CONCAT('%', #{teacherNo}, '%')
         </if>
         <if test="teacherName != null">
-            AND teacher_name LIKE CONCAT('%', #{teacherName}, '%')
+            AND Name LIKE CONCAT('%', #{teacherName}, '%')
         </if>
         <if test="teacherDept != null">
-            AND teacher_dept LIKE CONCAT('%', #{teacherDept}, '%')
+            AND DeptID LIKE CONCAT('%', #{teacherDept}, '%')
         </if>
         <if test="teacherPosition != null">
-            AND teacher_position = #{teacherPosition}
+            AND Title = #{teacherPosition}
         </if>
     </select>
 

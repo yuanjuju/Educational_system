@@ -15,7 +15,7 @@ public interface SCMapper {
     List<SC> findStudentCourses(
             @Param("studentNo") String studentNo,
             @Param("courseNo") String courseNo,
-            @Param("buyTextbook") String buyTextbook,
+            @Param("buyTextbook") int buyTextbook,
             @Param("minGrade") Float minGrade,
             @Param("maxGrade") Float maxGrade,
             @Param("offset") int offset,
@@ -27,7 +27,7 @@ public interface SCMapper {
     int getTotalCount(
             @Param("studentNo") String studentNo,
             @Param("courseNo") String courseNo,
-            @Param("buyTextbook") String buyTextbook,
+            @Param("buyTextbook") int buyTextbook,
             @Param("minGrade") Float minGrade,
             @Param("maxGrade") Float maxGrade
     );

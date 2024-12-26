@@ -27,8 +27,7 @@ public interface CourseMapper {
             @Param("courseName") String courseName,
             @Param("credit") Float credit,
             @Param("dayOfWeek") String dayOfWeek,
-            @Param("timeSlot") String timeSlot,
-            @Param("teacherName") String teacherName
+            @Param("timeSlot") String timeSlot
     );
     @Select("SELECT c.CourseID, c.CourseName " +
             "FROM course c " +
@@ -49,15 +48,13 @@ public interface CourseMapper {
                              @Param("course_name") String course_name,
                              @Param("credit") Float credit,
                              @Param("day_of_week") String day_of_week,
-                             @Param("time_slot") String time_slot,
-                             @Param("teacher_name") String teacher_name);
+                             @Param("time_slot") String time_slot);
 
     List<Course> findCourses(@Param("course_no") String courseNo,
                              @Param("course_name")String courseName,
                              @Param("credit") Float credit,
                              @Param("day_of_week") String dayOfWeek,
                              @Param("time_slot") String timeSlot,
-                             @Param("teacher_name") String teacherName,
                              @Param("page") int page,
                              @Param("pageSize") int pageSize);
 }

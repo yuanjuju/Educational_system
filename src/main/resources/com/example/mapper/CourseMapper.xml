@@ -33,7 +33,6 @@
 
     <select id="getTotalCount" resultType="int">
             SELECT COUNT(*) FROM course c
-            LEFT JOIN teacher t ON c.TeacherID = t.TeacherID
             WHERE 1=1
             <if test="courseNo != null">
                 AND c.course_no LIKE CONCAT('%', #{courseNo}, '%')
@@ -50,16 +49,12 @@
             <if test="timeSlot != null">
                 AND c.TimePeriodLIKE CONCAT('%', #{timeSlot}, '%')
             </if>
-            <if test="teacherName != null">
-                AND t.Name  LIKE CONCAT('%', #{teacherName}, '%')
-            </if>
     </select>
 
 
     <select id="getTotalCoursesCount" resultType="int">
             SELECT COUNT(*)
             FROM course c
-            JOIN teacher t ON c.TeacherID = t.TeacherID
             WHERE 1=1
             <if test="course_no != null and course_no != ''">
                 AND c.course_no LIKE CONCAT('%', #{course_no}, '%')
@@ -75,9 +70,6 @@
             </if>
             <if test="time_slot != null and time_slot != ''">
                 AND c.TimePeriod = #{time_slot}
-            </if>
-            <if test="teacher_name != null and teacher_name != ''">
-                AND t.Name LIKE CONCAT('%', #{teacher_name}, '%')
             </if>
     </select>
 
@@ -101,11 +93,14 @@
         <if test="time_slot != null and time_slot != ''">
             AND c.TimePeriod = #{time_slot}
         </if>
-        <if test="teacher_name != null and teacher_name != ''">
-            AND t.Name LIKE CONCAT('%', #{teacher_name}, '%')
-        </if>
         LIMIT #{page}, #{pageSize}
     </select>
+
+    <resultMap id="courseResultMap" type="Course">
+        <result property="course_no" column="course_no"/>
+        <!-- 其他字段映射 -->
+    </resultMap>
+
 
 
 

@@ -21,14 +21,14 @@ public class CourseServiceImpl implements CourseService {
 
 
     public List<Course> findCourses(String courseNo, String courseName, Float credit, String dayOfWeek, String timeSlot,
-                                    String teacherName, int page, int pageSize) {
+                                    int page, int pageSize) {
         int offset = (page - 1) * pageSize;
-        return courseMapper.findCourses(courseNo, courseName, credit, dayOfWeek, timeSlot, teacherName, offset, pageSize);
+        return courseMapper.findCourses(courseNo, courseName, credit, dayOfWeek, timeSlot,  offset, pageSize);
     }
 
 
-    public int getTotalCount(String courseNo, String courseName, Float credit, String dayOfWeek, String timeSlot, String teacherName) {
-        return courseMapper.getTotalCount(courseNo, courseName, credit, dayOfWeek, timeSlot, teacherName);
+    public int getTotalCount(String courseNo, String courseName, Float credit, String dayOfWeek, String timeSlot) {
+        return courseMapper.getTotalCount(courseNo, courseName, credit, dayOfWeek, timeSlot);
     }
 
 
@@ -49,7 +49,7 @@ public class CourseServiceImpl implements CourseService {
 
 
 
-    public int getTotalCoursesCount(String course_no, String course_name, Float credit, String day_of_week, String time_slot, String teacher_name) {
-        return courseMapper.getTotalCoursesCount(course_no, course_name, credit, day_of_week, time_slot, teacher_name);
+    public int getTotalCoursesCount(String course_no, String course_name, Float credit, String day_of_week, String time_slot) {
+        return courseMapper.getTotalCoursesCount(course_no, course_name, credit, day_of_week, time_slot);
     }
 }
