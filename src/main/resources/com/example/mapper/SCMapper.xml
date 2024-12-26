@@ -12,7 +12,7 @@
         <if test="courseNo != null">
             AND sc.courseID LIKE CONCAT('%', #{courseNo}, '%')
         </if>
-        <if test="buyTextbook != null">
+        <if test="buyTextbook!=2">
             AND sc.BuyBook = #{buyTextbook}
         </if>
         <if test="minGrade != null">
@@ -34,7 +34,7 @@
             <if test="courseNo != null">
                 AND sc.courseID LIKE CONCAT('%', #{courseNo}, '%')
             </if>
-            <if test="buyTextbook != null">
+            <if test="buyTextbook != 2">
                 AND sc.BuyBook = #{buyTextbook}
             </if>
             <if test="minGrade != null">
