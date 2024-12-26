@@ -39,4 +39,6 @@ public interface AdministratorService {
     Admin LoginAdmin(Admin admin);
 
     void UpdateAdminPassword(Admin admin);
+
+    void RegisterAdmin(Admin admin);
 }

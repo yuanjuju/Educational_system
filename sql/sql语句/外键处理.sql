@@ -54,4 +54,8 @@ ALTER TABLE admin
 
 select CourseName,Grade
         from sc,course
-        where sc.CourseID=course.CourseID and StudentID=1
+        where sc.CourseID=course.CourseID and StudentID=1;
+
+
+INSERT INTO admin (username, password, admin_no)
+VALUES ('test1', 'test2', 'test2');

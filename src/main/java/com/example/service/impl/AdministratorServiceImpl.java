@@ -91,5 +91,10 @@ public class AdministratorServiceImpl implements AdministratorService {
         administratorMapper.UpdateAdminPassword(admin);
     }
 
+    @Override
+    public void RegisterAdmin(Admin admin) {
+        administratorMapper.RegisterAdmin(admin);
+    }
+
 
 }

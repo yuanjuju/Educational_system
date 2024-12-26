@@ -94,4 +94,8 @@ public interface AdministratorMapper {
             "set password=#{new_password} " +
             "where admin_no=#{admin_no} and password=#{password}")
     void UpdateAdminPassword(Admin admin);
+
+    @Insert("insert into admin(username,password,admin_no) " +
+            "values (#{username},#{password},#{admin_no})")
+    void RegisterAdmin(Admin admin);
 }
