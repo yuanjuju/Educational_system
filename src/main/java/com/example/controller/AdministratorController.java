@@ -177,6 +177,9 @@ public class AdministratorController {
 
         // 调用服务层方法获取课程数据
 
+        System.out.print(courseNo);
+        System.out.print(courseNo);
+        System.out.print(courseNo);
         List<Course> courses = courseService.findCourses(courseNo, courseName, credit, dayOfWeek, timeSlot, teacherName, page, pageSize);
         int total = courseService.getTotalCount(courseNo, courseName, credit, dayOfWeek, timeSlot, teacherName);
 

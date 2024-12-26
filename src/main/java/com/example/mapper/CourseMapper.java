@@ -52,5 +52,12 @@ public interface CourseMapper {
                              @Param("time_slot") String time_slot,
                              @Param("teacher_name") String teacher_name);
 
-    List<Course> findCourses(String courseNo, String courseName, Float credit, String dayOfWeek, String timeSlot, String teacherName, int offset, int pageSize);
+    List<Course> findCourses(@Param("course_no") String courseNo,
+                             @Param("course_name")String courseName,
+                             @Param("credit") Float credit,
+                             @Param("day_of_week") String dayOfWeek,
+                             @Param("time_slot") String timeSlot,
+                             @Param("teacher_name") String teacherName,
+                             @Param("page") int page,
+                             @Param("pageSize") int pageSize);
 }
