@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +19,10 @@ public class Course {
         private String teacher_name;   //老师的名字
         private String day_of_week;    // 新增字段：星期几
         private String time_slot;   // 新增字段：时间段
-        private String course_no;
+
+        @Column(name = "course_no")
+        private String course_no;  // 显式指明数据库列名
+
 
 
         private int CourseID;

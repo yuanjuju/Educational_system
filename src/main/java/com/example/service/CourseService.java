@@ -6,9 +6,9 @@ import com.example.pojo.StudentGrade;
 import java.util.List;
 
 public interface CourseService {
-    List<Course> findCourses(String courseNo, String courseName, Float credit, String dayOfWeek, String timeSlot, String teacherName, int page, int pageSize);
+    List<Course> findCourses(String courseNo, String courseName, Float credit, String dayOfWeek, String timeSlot, int page, int pageSize);
 
-    int getTotalCount(String courseNo, String courseName, Float credit, String dayOfWeek, String timeSlot, String teacherName);
+    int getTotalCount(String courseNo, String courseName, Float credit, String dayOfWeek, String timeSlot);
     List<Course> getCoursesByTeacherId(int teacherId);
 
     List<StudentGrade> getStudentsByCourseId(int courseId);
@@ -17,5 +17,5 @@ public interface CourseService {
 
     int getTotalCourseCount();
 
-    int getTotalCoursesCount(String courseNo, String courseName, Float credit, String dayOfWeek, String timeSlot, String teacherName);
+    int getTotalCoursesCount(String courseNo, String courseName, Float credit, String dayOfWeek, String timeSlot);
 }

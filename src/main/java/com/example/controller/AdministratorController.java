@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Slf4j
@@ -173,15 +174,19 @@ public class AdministratorController {
             @RequestParam(value = "credit", required = false) Float credit,
             @RequestParam(value = "day_of_week", required = false) String dayOfWeek,
             @RequestParam(value = "time_slot", required = false) String timeSlot,
-            @RequestParam(value = "teacher_name", required = false) String teacherName,
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "pageSize", defaultValue = "20") int pageSize) {
 
         // 调用服务层方法获取课程数据
 
-        List<Course> courses = courseService.findCourses(courseNo, courseName, credit, dayOfWeek, timeSlot, teacherName, page, pageSize);
-        int total = courseService.getTotalCount(courseNo, courseName, credit, dayOfWeek, timeSlot, teacherName);
+        System.out.print(courseNo);
+        System.out.print(courseNo);
+        System.out.print(courseNo);
+        List<Course> courses = courseService.findCourses(courseNo, courseName, credit, dayOfWeek, timeSlot, page, pageSize);
+        int total = courseService.getTotalCount(courseNo, courseName, credit, dayOfWeek, timeSlot);
 
+
+        System.out.print(courses);
         // 判断是否有符合条件的课程
         if (courses.isEmpty()) {
             return Result.error("没有符合条件的信息");
@@ -201,9 +206,27 @@ public class AdministratorController {
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "pageSize", defaultValue = "20") int pageSize) {
 
+        System.out.print(buyTextbook);
+        List<SC> studentCourses;
         // 调用服务层方法获取选课记录
-        List<SC> studentCourses = scService.findStudentCourses(studentNo, courseNo, buyTextbook, minGrade, maxGrade, page, pageSize);
-        int total = scService.getTotalCount(studentNo, courseNo, buyTextbook, minGrade, maxGrade);
+        if(buyTextbook.isEmpty())
+        {
+
+            studentCourses = scService.findStudentCourses(studentNo, courseNo, 1, minGrade, maxGrade, page, pageSize);
+            int total = scService.getTotalCount(studentNo, courseNo, 1, minGrade, maxGrade);
+        }
+        if(Objects.equals(buyTextbook, "是"))
+        {
+            studentCourses = scService.findStudentCourses(studentNo, courseNo, 1, minGrade, maxGrade, page, pageSize);
+            int total = scService.getTotalCount(studentNo, courseNo, 1, minGrade, maxGrade);
+
+        }
+        else
+        {
+            studentCourses = scService.findStudentCourses(studentNo, courseNo, 0, minGrade, maxGrade, page, pageSize);
+            int total = scService.getTotalCount(studentNo, courseNo, 0, minGrade, maxGrade);
+        }
+
 
         // 判断是否有符合条件的选课记录
         if (studentCourses.isEmpty()) {

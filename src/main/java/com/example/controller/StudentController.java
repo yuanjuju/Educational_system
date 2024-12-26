@@ -127,13 +127,12 @@ public class StudentController {
                               @RequestParam(value = "credit", required = false) Float credit,
                               @RequestParam(value = "day_of_week", required = false) String day_of_week,
                               @RequestParam(value = "time_slot", required = false) String time_slot,
-                              @RequestParam(value = "teacher_name", required = false) String teacher_name,
                               @RequestParam(value = "page", defaultValue = "1") int page,
                               @RequestParam(value = "pageSize", defaultValue = "20") int pageSize) {
 
         // 获取符合条件的课程
-        List<Course> courses = courseService.findCourses(course_no, course_name, credit, day_of_week, time_slot, teacher_name, page, pageSize);
-        int total = courseService.getTotalCoursesCount(course_no, course_name, credit, day_of_week, time_slot, teacher_name);
+        List<Course> courses = courseService.findCourses(course_no, course_name, credit, day_of_week, time_slot, page, pageSize);
+        int total = courseService.getTotalCoursesCount(course_no, course_name, credit, day_of_week, time_slot);
 
         if (courses.isEmpty()) {
             return Result.error("查找课程失败");
