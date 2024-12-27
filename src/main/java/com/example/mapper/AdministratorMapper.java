@@ -18,8 +18,8 @@ public interface AdministratorMapper {
     void AddTeacher(Teacher teacher);
 
 
-    @Insert("INSERT INTO course(CourseName, Credits, TeacherID, DayOfWeek, TimePeriod)\n" +
-            "VALUES (#{course_name}, #{credit}, #{teacher_id}, #{day_of_week}, #{time_slot})")
+    @Insert("INSERT INTO course(CourseName, Credits, TeacherID, DayOfWeek, TimePeriod,course_no)\n" +
+            "VALUES (#{course_name}, #{credit}, #{teacher_id}, #{day_of_week}, #{time_slot},#{course_no})")
     void AddCourse(Course course);
 
     @Insert("INSERT INTO sc(StudentID, CourseID, BuyBook) " +

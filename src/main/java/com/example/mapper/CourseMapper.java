@@ -33,11 +33,12 @@ public interface CourseMapper {
             "FROM course c " +
             "WHERE c.TeacherID = #{teacherId}")
     List<Course> findCoursesByTeacherId(@Param("teacherId") int teacherId);
-    @Select("SELECT c.CourseID, c.course_no, c.CourseName, c.Credits, c.DayOfWeek, c.TimePeriod " +
+    @Select("SELECT c.CourseID, c.course_no, c.CourseName, c.Credits, c.DayOfWeek, c.TimePeriod, t.TeacherID, t.Name " +
             "FROM course c " +
             "JOIN teacher t ON c.TeacherID = t.TeacherID " +
             "LIMIT #{offset}, #{limit}")
     List<Course> getCourses(@Param("offset") int offset, @Param("limit") int limit);
+
 
     @Select("SELECT COUNT(*) FROM course")
     int getTotalCourseCount();
