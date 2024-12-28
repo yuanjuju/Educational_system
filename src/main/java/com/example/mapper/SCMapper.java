@@ -32,9 +32,9 @@ public interface SCMapper {
             @Param("maxGrade") Float maxGrade
     );
 
-    @Select("SELECT s.StudentID, s.Name, sc.grade " +
+    @Select("SELECT s.StudentID, s.Name, sc.Grade " +
             "FROM sc " +  // 使用 SC 表来查询选课信息
-            "JOIN student s ON sc.StudentID = s.Name " +  // 关联学生表
+            "JOIN student s ON sc.StudentID = s.StudentID " +  // 关联学生表
             "WHERE sc.CourseID = #{courseId}")  // 根据课程号筛选
     List<StudentGrade> findStudentsByCourseId(@Param("courseId") int courseId);
 }
