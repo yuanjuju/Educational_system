@@ -41,4 +41,7 @@ public interface TeacherMapper {
 
     @Select("select * from teacher where teacher_no=#{teacher_no}")
     List<Teacher> CheckteacherInfo(String teacher_no);
+
+
+    List<Teacher> findTeachersByIds(@Param("teacherIDs")List<String> teacherIDs);
 }

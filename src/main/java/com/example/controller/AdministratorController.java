@@ -8,8 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 @Slf4j
@@ -185,14 +187,37 @@ public class AdministratorController {
         List<Course> courses = courseService.findCourses(courseNo, courseName, credit, dayOfWeek, timeSlot, page, pageSize);
         int total = courseService.getTotalCount(courseNo, courseName, credit, dayOfWeek, timeSlot);
 
+        List<String> teacherIDs = courses.stream()
+                .map(Course::getTeacherID)  // 获取每门课程的 TeacherID
+                .distinct()                 // 去重
+                .collect(Collectors.toList());
+
+        List<Teacher> teachers = teacherService.findTeachersByIds(teacherIDs);
+
+        System.out.print(teachers);
+        System.out.print(teacherIDs);
 
         System.out.print(courses);
+
+
+        List<TeacherAndCourseResponse> mergedList = new ArrayList<>();
+
+        // 假设你是按某种规则将 Teacher 和 Course 匹配在一起的
+        for (Teacher teacher : teachers) {
+            for (Course course : courses) {
+                // 这里只是简单的示例，假设每个老师都教所有课程
+                TeacherAndCourseResponse teacherCourse = new TeacherAndCourseResponse(course,teacher);
+                mergedList.add(teacherCourse);
+            }
+        }
+
+
         // 判断是否有符合条件的课程
         if (courses.isEmpty()) {
             return Result.error("没有符合条件的信息");
         } else {
             // 返回查询结果
-            return Result.success(courses);
+            return Result.success(mergedList);
         }
     }
 

@@ -36,4 +36,14 @@
     </select>
 
 
+    <select id="findTeachersByIds" resultType="com.example.pojo.Teacher">
+        SELECT teacherID, Name,teacher_no,Title
+        FROM teacher
+        WHERE teacherID IN
+        <foreach item="id" collection="teacherIDs" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+
 </mapper>

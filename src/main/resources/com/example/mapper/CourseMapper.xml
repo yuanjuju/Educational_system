@@ -75,7 +75,7 @@
 
 
     <select id="findCourses" resultType="Course">
-        SELECT c.courseID, c.course_no, c.courseName, c.Credits, c.DayOfWeek, c.TimePeriod
+        SELECT c.courseID, c.course_no, c.courseName, c.Credits, c.DayOfWeek, c.TimePeriod , c.TeacherID
         FROM course c
         WHERE 1=1
         <if test="course_no != null and course_no != ''">

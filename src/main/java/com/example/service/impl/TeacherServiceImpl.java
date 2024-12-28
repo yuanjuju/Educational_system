@@ -46,6 +46,13 @@ public class TeacherServiceImpl implements TeacherService {
     public List<Teacher> CheckteacherInfo(String teacher_no) {
         return teacherMapper.CheckteacherInfo(teacher_no);
     }
+
+
+    @Override
+    public List<Teacher> findTeachersByIds(List<String> teacherIDs)
+    {
+        return teacherMapper.findTeachersByIds(teacherIDs);
+    }
 }
 
 
