@@ -14,4 +14,6 @@ public interface TeacherService {
     int getTotalCount(String teacherNo, String teacherName, String teacherDept, String teacherPosition);
 
     List<Teacher> CheckteacherInfo(String teacher_no);
+
+    List<Teacher> findTeachersByIds(List<String> teacherIDs);
 }
