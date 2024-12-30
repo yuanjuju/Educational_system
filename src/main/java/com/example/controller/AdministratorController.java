@@ -193,22 +193,26 @@ public class AdministratorController {
                 .collect(Collectors.toList());
 
         List<Teacher> teachers = teacherService.findTeachersByIds(teacherIDs);
-
+//
         System.out.print(teachers);
-        System.out.print(teacherIDs);
+
 
         System.out.print(courses);
 
 
         List<TeacherAndCourseResponse> mergedList = new ArrayList<>();
+        int totalSize = teachers.size() ;
 
-        // 假设你是按某种规则将 Teacher 和 Course 匹配在一起的
-        for (Teacher teacher : teachers) {
-            for (Course course : courses) {
-                // 这里只是简单的示例，假设每个老师都教所有课程
-                TeacherAndCourseResponse teacherCourse = new TeacherAndCourseResponse(course,teacher);
-                mergedList.add(teacherCourse);
-            }
+
+
+        for (int i = 0; i < totalSize; i++) {
+            // 计算当前索引对应的 Teacher 和 Course
+            Teacher teacher = teachers.get(i );
+            Course course = courses.get(i);
+
+            TeacherAndCourseResponse teacherCourse = new TeacherAndCourseResponse(course,teacher);
+            System.out.print(teacherCourse);
+            mergedList.add(teacherCourse);
         }
 
 
