@@ -16,7 +16,9 @@
 
 
 #### 部署教程
-安装好idea，配置好相对应的环境，点击Educationalsystemapplication文件，启动即可。
+安装好idea，配置好相对应的环境，点击Educationalsystemapplication文件，启动即可
+
+前端可以访问https://gitee.com/plumagee/web-frame-front-end获取，在项目目录下打开终端，启动命令是npm run dev
 
 #### 问题处理
 出现问题可以通过2752137957@qq.com联系我们
