@@ -1,25 +1,30 @@
-# Educational-system
+# Educational-system — 教务管理系统
 
-#### 介绍
-此为基于SpringBoot开发的一套教务系统。
+## 项目简介
 
-#### 功能
-具有学生、教师、管理员角色，并实现如下基础功能
+基于 SpringBoot 开发的一套教务管理系统，支持学生、教师、管理员三种角色，实现课程、选课及人员信息的统一管理。
 
-学生管理：学生的增删改查
+## 功能特性
 
-课程管理：课程的增删改查
+- **学生管理**：学生的增删改查
+- **课程管理**：课程的增删改查
+- **教师管理**：教师的增删改查，一名教师可教授 1~n 门课程
+- **选课管理**：选课的增删改查，每位学生可选择 1~n 门课程
 
-教师管理：教师的增删改查，一名教师可以教授1~n门课程
+## 技术栈
 
-选课管理：选课的增删改查，每位学生可以选择1~n门课程
+- SpringBoot
+- MySQL
+- MyBatis
+- RESTful API
 
+## 部署
 
-#### 部署教程
-安装好idea，配置好相对应的环境，点击Educationalsystemapplication文件，启动即可
+1. 安装 IntelliJ IDEA，配置好项目环境
+2. 导入数据库脚本 `dump.sql`
+3. 启动 `EducationalsystemApplication.java`
+4. 前端项目访问开发服务器即可
 
-前端可以访问https://gitee.com/plumagee/web-frame-front-end
-在项目目录下打开终端，启动命令是npm run dev
+## 问题反馈
 
-#### 问题处理
-出现问题可以通过2752137957@qq.com联系我们
+📧 2752137957@qq.com
